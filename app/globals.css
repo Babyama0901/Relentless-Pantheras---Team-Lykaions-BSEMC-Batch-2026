@@ -1,30 +1,5 @@
 @import "tailwindcss";
 
-/* ─── Official Brand Fonts ─────────────────────────────────────────────────── */
-@font-face {
-  font-family: "Formula1";
-  src: url("/Webfonts/Webfonts/Formula1-Black.ttf") format("truetype");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Arame";
-  src: url("/Webfonts/Webfonts/Arame-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Trap";
-  src: url("/Webfonts/Webfonts/Trap-SemiBold.otf") format("opentype");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* ─── Design Tokens ────────────────────────────────────────────────────────── */
 @theme {
   /* Official Brand Colors */
@@ -35,9 +10,9 @@
   --color-brand-black:        #0F0014;
 
   /* Font families */
-  --font-formula: "Formula1", ui-sans-serif, system-ui, sans-serif;
-  --font-arame:   "Arame", ui-monospace, monospace;
-  --font-trap:    "Trap", ui-sans-serif, system-ui, sans-serif;
+  --font-formula: var(--font-formula), ui-sans-serif, system-ui, sans-serif;
+  --font-arame:   var(--font-arame), ui-monospace, monospace;
+  --font-trap:    var(--font-trap), ui-sans-serif, system-ui, sans-serif;
 }
 
 /* ─── Base Styles ──────────────────────────────────────────────────────────── */

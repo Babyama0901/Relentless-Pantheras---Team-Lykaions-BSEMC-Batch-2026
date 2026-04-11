@@ -1,5 +1,6 @@
 "use client";
 
+import { getAssetPath } from './utils';
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -53,7 +54,7 @@ export default function YearbookSection() {
       {/* ── Background photo ── */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/Memories/IMG_20251121_103356.jpg"
+        src={getAssetPath("/Memories/IMG_20251121_103356.jpg")}
         alt="Team Lykaions Batch 2026"
         className="absolute inset-0 w-full h-full object-cover"
         style={{ filter: "brightness(0.40) saturate(0.6)" }}

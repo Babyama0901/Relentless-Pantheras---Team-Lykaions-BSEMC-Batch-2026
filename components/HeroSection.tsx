@@ -1,5 +1,6 @@
 "use client";
 
+import { getAssetPath } from './utils';
 import { useRef, useMemo, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 // ─── Hero Section ──────────────────────────────────────────────────────────
@@ -85,7 +86,7 @@ export default function HeroSection() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={url}
+              src={getAssetPath(url)}
               alt={`Slide ${index + 1}`}
               className={`w-full h-full object-cover transition-transform duration-[8000ms] ease-out origin-center ${
                 currentSlide === index ? "scale-110" : "scale-100"
@@ -159,7 +160,7 @@ export default function HeroSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-10 pointer-events-none" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/Memories/20220930_140639.jpg"
+                src={getAssetPath("/Memories/20220930_140639.jpg")}
                 alt="Campus highlights"
                 className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
               />

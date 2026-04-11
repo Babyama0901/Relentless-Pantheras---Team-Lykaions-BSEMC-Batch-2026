@@ -1,5 +1,6 @@
 "use client";
 
+import { getAssetPath } from './utils';
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -113,7 +114,7 @@ export default function OurPartners() {
             */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img 
-              src={partner.logo} 
+              src={getAssetPath(partner.logo)} 
               alt={partner.name}
               className="max-w-full max-h-full object-contain brightness-0 invert opacity-60 group-hover:opacity-100 group-hover:drop-shadow-[0_0_12px_rgba(110,0,255,0.8)] transition-all duration-500"
               loading="lazy"
