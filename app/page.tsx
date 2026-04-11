@@ -7,10 +7,12 @@ import PillarsOfDreams from '../components/PillarsOfDreams';
 import OurPartners from '../components/OurPartners';
 import SiteFooter from '../components/SiteFooter';
 import AnimatedDivider from '../components/AnimatedDivider';
+import CountdownLock from '../components/CountdownLock';
 
 export default function Home() {
   return (
-    <main className="bg-black min-h-screen overflow-x-hidden">
+    <CountdownLock>
+      <main className="bg-black min-h-screen overflow-x-hidden">
 
       {/* 01 · Hero */}
       <HeroSection />
@@ -50,5 +52,6 @@ export default function Home() {
       {/* Footer */}
       <SiteFooter />
     </main>
+    </CountdownLock>
   );
 }
