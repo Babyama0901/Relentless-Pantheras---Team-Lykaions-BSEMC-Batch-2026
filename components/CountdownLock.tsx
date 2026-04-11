@@ -14,28 +14,15 @@ export default function CountdownLock({ children }: { children: React.ReactNode 
 
   useEffect(() => {
     setIsMounted(true);
-    
-    // 1. Check for silent developer bypass in URL
-    const searchParams = new URLSearchParams(window.location.search);
-    if (searchParams.get("dev") === "unlock") {
-      localStorage.setItem("developerUnlock", "true");
-      // Clean up URL without reloading to hide the secret
-      window.history.replaceState({}, document.title, window.location.pathname);
-    }
-    
-    // 2. Check localized storage
-    if (localStorage.getItem("developerUnlock") === "true") {
-      setIsUnlocked(true);
-      return;
-    }
+    let timer: NodeJS.Timeout;
 
-    // 3. Initiate Countdown Timer
     const calculateTime = () => {
       const now = new Date().getTime();
       const distance = TARGET_DATE - now;
 
       if (distance < 0) {
         setIsUnlocked(true);
+        if (timer) clearInterval(timer);
       } else {
         setTimeLeft({
           days: Math.floor(distance / (1000 * 60 * 60 * 24)),
@@ -46,10 +33,46 @@ export default function CountdownLock({ children }: { children: React.ReactNode 
       }
     };
 
-    calculateTime(); // run immediately
-    const timer = setInterval(calculateTime, 1000);
+    const runAuthAndTimer = async () => {
+      let isAuthorized = false;
+      const VALID_HASH = "8d6cf8a58990d522cc899f54e9f0adeee84f4ea9c7fabb2aad2953e4ad11a777"; // Hash of 'pantheras_dev'
+      
+      try {
+        const searchParams = new URLSearchParams(window.location.search);
+        const secretKey = searchParams.get("key");
+        
+        if (secretKey) {
+          const encoder = new TextEncoder();
+          const hashBuffer = await crypto.subtle.digest("SHA-256", encoder.encode(secretKey));
+          const hashHex = Array.from(new Uint8Array(hashBuffer))
+            .map(b => b.toString(16).padStart(2, '0'))
+            .join('');
+            
+          if (hashHex === VALID_HASH) {
+            localStorage.setItem("secure_unlock_hash", hashHex);
+            isAuthorized = true;
+            window.history.replaceState({}, document.title, window.location.pathname);
+          }
+        } else if (localStorage.getItem("secure_unlock_hash") === VALID_HASH) {
+          isAuthorized = true;
+        }
+      } catch (e) {
+        // Fallback silently on old browsers
+      }
 
-    return () => clearInterval(timer);
+      if (isAuthorized) {
+        setIsUnlocked(true);
+      } else {
+        calculateTime();
+        timer = setInterval(calculateTime, 1000);
+      }
+    };
+
+    runAuthAndTimer();
+
+    return () => {
+      if (timer) clearInterval(timer);
+    }
   }, []);
 
   // Entrance Animation for Countdown UI
