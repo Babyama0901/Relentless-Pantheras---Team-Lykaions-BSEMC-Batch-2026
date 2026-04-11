@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/* ─── Official Brand Fonts ─────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Formula1";
+  src: url("/Webfonts/Webfonts/Formula1-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Arame";
+  src: url("/Webfonts/Webfonts/Arame-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Trap";
+  src: url("/Webfonts/Webfonts/Trap-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── Design Tokens ────────────────────────────────────────────────────────── */
+@theme {
+  /* Official Brand Colors */
+  --color-brand-violet:       #6E00FF;
+  --color-brand-violet-dark:  #420099;
+  --color-brand-yellow:       #FBFF00;
+  --color-brand-white:        #FFFFFF;
+  --color-brand-black:        #0F0014;
+
+  /* Font families */
+  --font-formula: "Formula1", ui-sans-serif, system-ui, sans-serif;
+  --font-arame:   "Arame", ui-monospace, monospace;
+  --font-trap:    "Trap", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ─── Base Styles ──────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+    font-family: "Trap", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Hide scrollbar for horizontal scroll tracks */
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Selection highlight */
+  ::selection {
+    background: #6E00FF;
+    color: #fff;
+  }
+}
+
+/* ─── Component Utilities ──────────────────────────────────────────────────── */
+@layer components {
+
+  /* Glassmorphism cards */
+  .glass-panel {
+    @apply bg-white/5 border border-white/10 backdrop-blur-2xl rounded-2xl
+           shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] transition-all duration-300;
+  }
+  .glass-panel:hover {
+    @apply bg-white/10 border-white/20 shadow-[0_8px_32px_0_rgba(110,0,255,0.08)];
+  }
+
+  /* Typography utility classes mapped to brand fonts */
+  .font-formula {
+    font-family: "Formula1", ui-sans-serif, system-ui, sans-serif;
+  }
+  .font-arame {
+    font-family: "Arame", ui-monospace, monospace;
+  }
+  .font-trap {
+    font-family: "Trap", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Brand accent classes */
+  .text-brand-violet  { color: #6E00FF; }
+  .text-brand-violet-dark { color: #420099; }
+  .text-brand-yellow  { color: #FBFF00; }
+  .bg-brand-violet    { background-color: #6E00FF; }
+  .bg-brand-violet-dark { background-color: #420099; }
+  .bg-brand-yellow    { background-color: #FBFF00; }
+  .border-brand-violet { border-color: #6E00FF; }
+
+  /* Monumental hero heading */
+  .hero-heading {
+    font-family: "Formula1", ui-sans-serif, system-ui, sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 0.88;
+    text-transform: uppercase;
+  }
+
+  /* Section divider */
+  .section-divider {
+    @apply w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent;
+  }
+
+  /* Brand violet glow */
+  .glow-violet {
+    box-shadow: 0 0 40px 0 rgba(110, 0, 255, 0.35);
+  }
+}
