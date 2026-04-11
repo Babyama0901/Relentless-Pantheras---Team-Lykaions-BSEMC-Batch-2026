@@ -26,14 +26,17 @@ export default function HeroSection() {
         .from(scrollIndicatorRef.current, { opacity: 0, y: 10, duration: 1 }, 1.4);
 
       // Scroll indicator loop
-      gsap.to(scrollIndicatorRef.current?.querySelector('.scroll-line'), {
-        scaleY: 0.5,
-        transformOrigin: "top center",
-        repeat: -1,
-        yoyo: true,
-        duration: 1.2,
-        ease: "sine.inOut",
-      });
+      const scrollLine = scrollIndicatorRef.current?.querySelector('.scroll-line');
+      if (scrollLine) {
+        gsap.to(scrollLine, {
+          scaleY: 0.5,
+          transformOrigin: "top center",
+          repeat: -1,
+          yoyo: true,
+          duration: 1.2,
+          ease: "sine.inOut",
+        });
+      }
     }, heroRef);
 
     return () => ctx.revert();
