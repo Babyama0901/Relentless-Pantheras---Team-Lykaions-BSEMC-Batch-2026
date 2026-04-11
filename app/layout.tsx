@@ -3,7 +3,7 @@ import { formula1, arame, trap } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Team Lykaions | Batch 2026",
+  title: "Team Lykaions | BSEMC Batch 2026",
   description: "Relentless Pantheras — A living digital memory for the Class of 2026.",
 };
 
