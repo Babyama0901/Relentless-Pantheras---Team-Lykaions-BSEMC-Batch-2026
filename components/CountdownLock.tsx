@@ -41,7 +41,11 @@ export default function CountdownLock({ children }: { children: React.ReactNode 
         const searchParams = new URLSearchParams(window.location.search);
         const secretKey = searchParams.get("key");
         
-        if (secretKey) {
+        if (secretKey === "lock") {
+          localStorage.removeItem("secure_unlock_hash");
+          isAuthorized = false;
+          window.history.replaceState({}, document.title, window.location.pathname);
+        } else if (secretKey) {
           const encoder = new TextEncoder();
           const hashBuffer = await crypto.subtle.digest("SHA-256", encoder.encode(secretKey));
           const hashHex = Array.from(new Uint8Array(hashBuffer))
