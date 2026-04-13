@@ -1,0 +1,27 @@
+/* [project]/app/arame_6e9dc518.module.css [app-client] (css) */
+@font-face {
+  font-family: arame;
+  src: url("../media/Arame_Bold-s.p.2a32e19e.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: arame Fallback;
+  src: local(Arial);
+  ascent-override: 69.76%;
+  descent-override: 17.44%;
+  line-gap-override: 0.0%;
+  size-adjust: 114.68%;
+}
+
+.arame_6e9dc518-module__VgSayq__className {
+  font-family: arame, arame Fallback;
+  font-weight: 700;
+}
+
+.arame_6e9dc518-module__VgSayq__variable {
+  --font-arame: "arame", "arame Fallback";
+}
+
+/*# sourceMappingURL=app_arame_6e9dc518_module_css_bad6b30c._.single.css.map*/

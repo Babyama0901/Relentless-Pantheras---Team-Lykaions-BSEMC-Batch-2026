@@ -1,0 +1,27 @@
+/* [project]/app/formula1_5a82c519.module.css [app-client] (css) */
+@font-face {
+  font-family: formula1;
+  src: url("../media/Formula1_Black-s.p.0dbfa26a.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: formula1 Fallback;
+  src: local(Arial);
+  ascent-override: 66.69%;
+  descent-override: 7.41%;
+  line-gap-override: 14.82%;
+  size-adjust: 134.95%;
+}
+
+.formula1_5a82c519-module__2OD2BG__className {
+  font-family: formula1, formula1 Fallback;
+  font-weight: 900;
+}
+
+.formula1_5a82c519-module__2OD2BG__variable {
+  --font-formula: "formula1", "formula1 Fallback";
+}
+
+/*# sourceMappingURL=app_formula1_5a82c519_module_css_bad6b30c._.single.css.map*/

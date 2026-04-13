@@ -1,1 +1,12 @@
-{"pages":{},"app":{},"appUsingSizeAdjust":false,"pagesUsingSizeAdjust":false}
+{
+  "app": {
+    "[project]/app/page": [
+      "static/media/Formula1_Black-s.p.0dbfa26a.ttf",
+      "static/media/Arame_Bold-s.p.2a32e19e.ttf",
+      "static/media/Trap_SemiBold-s.p.f5651bdd.otf"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pages": {},
+  "pagesUsingSizeAdjust": false
+}

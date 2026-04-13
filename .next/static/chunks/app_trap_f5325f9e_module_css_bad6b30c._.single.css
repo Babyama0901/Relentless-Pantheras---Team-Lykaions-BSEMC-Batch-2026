@@ -1,0 +1,27 @@
+/* [project]/app/trap_f5325f9e.module.css [app-client] (css) */
+@font-face {
+  font-family: trap;
+  src: url("../media/Trap_SemiBold-s.p.f5651bdd.otf") format("opentype");
+  font-display: swap;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: trap Fallback;
+  src: local(Arial);
+  ascent-override: 66.05%;
+  descent-override: 22.02%;
+  line-gap-override: 8.81%;
+  size-adjust: 113.56%;
+}
+
+.trap_f5325f9e-module__s2Md0a__className {
+  font-family: trap, trap Fallback;
+  font-weight: 600;
+}
+
+.trap_f5325f9e-module__s2Md0a__variable {
+  --font-trap: "trap", "trap Fallback";
+}
+
+/*# sourceMappingURL=app_trap_f5325f9e_module_css_bad6b30c._.single.css.map*/

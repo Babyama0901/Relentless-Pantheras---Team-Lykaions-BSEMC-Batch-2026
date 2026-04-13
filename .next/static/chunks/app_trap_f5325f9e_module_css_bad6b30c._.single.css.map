@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/app/trap_f5325f9e.module.css"],"sourcesContent":["@font-face {\n    font-family: 'trap';\n    src: url('@vercel/turbopack-next/internal/font/local/font?{%22path%22:%22../public/Webfonts/Webfonts/Trap-SemiBold.otf%22,%22preload%22:true,%22has_size_adjust%22:true}') format('opentype');\n    font-display: swap;\n    font-weight: 600;\n}\n\n@font-face {\n    font-family: 'trap Fallback';\n    src: local(\"Arial\");\n    ascent-override: 66.05%;\ndescent-override: 22.02%;\nline-gap-override: 8.81%;\nsize-adjust: 113.56%;\n\n}\n\n.className {\n    font-family: 'trap', 'trap Fallback';\n    font-weight: 600;\n\n}\n.variable {\n    --font-trap: 'trap', 'trap Fallback';\n}\n\n"],"names":[],"mappings":"AAAA;;;;;;;AAOA;;;;;;;;;AAUA;;;;;AAKA"}}]
+}

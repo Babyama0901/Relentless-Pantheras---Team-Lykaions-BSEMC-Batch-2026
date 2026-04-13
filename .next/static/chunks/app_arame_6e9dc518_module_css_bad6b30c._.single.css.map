@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/app/arame_6e9dc518.module.css"],"sourcesContent":["@font-face {\n    font-family: 'arame';\n    src: url('@vercel/turbopack-next/internal/font/local/font?{%22path%22:%22../public/Webfonts/Webfonts/Arame-Bold.ttf%22,%22preload%22:true,%22has_size_adjust%22:true}') format('truetype');\n    font-display: swap;\n    font-weight: 700;\n}\n\n@font-face {\n    font-family: 'arame Fallback';\n    src: local(\"Arial\");\n    ascent-override: 69.76%;\ndescent-override: 17.44%;\nline-gap-override: 0.00%;\nsize-adjust: 114.68%;\n\n}\n\n.className {\n    font-family: 'arame', 'arame Fallback';\n    font-weight: 700;\n\n}\n.variable {\n    --font-arame: 'arame', 'arame Fallback';\n}\n\n"],"names":[],"mappings":"AAAA;;;;;;;AAOA;;;;;;;;;AAUA;;;;;AAKA"}}]
+}
