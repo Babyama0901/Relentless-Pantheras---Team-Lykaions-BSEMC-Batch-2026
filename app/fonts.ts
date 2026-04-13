@@ -20,3 +20,9 @@ export const trap = localFont({
   weight: '600',
   display: 'swap',
 });
+
+export const aboveBeyond = localFont({
+  src: '../public/Webfonts/Webfonts/Above the Beyond Script.otf',
+  variable: '--font-script',
+  display: 'swap',
+});

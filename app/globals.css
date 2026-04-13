@@ -64,6 +64,9 @@
   .font-trap {
     font-family: "Trap", ui-sans-serif, system-ui, sans-serif;
   }
+  .font-script {
+    font-family: var(--font-script), cursive;
+  }
 
   /* Brand accent classes */
   .text-brand-violet  { color: #6E00FF; }
