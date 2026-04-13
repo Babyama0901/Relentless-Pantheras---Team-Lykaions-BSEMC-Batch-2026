@@ -9,8 +9,35 @@ export default function CountdownLock({ children }: { children: React.ReactNode 
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [devPassword, setDevPassword] = useState("");
+  const [isPasswordError, setIsPasswordError] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleDeveloperSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!devPassword) return;
+
+    try {
+      const encoder = new TextEncoder();
+      const hashBuffer = await crypto.subtle.digest("SHA-256", encoder.encode(devPassword));
+      const hashHex = Array.from(new Uint8Array(hashBuffer))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+        
+      const VALID_HASH = "8d6cf8a58990d522cc899f54e9f0adeee84f4ea9c7fabb2aad2953e4ad11a777";
+      
+      if (hashHex === VALID_HASH) {
+        localStorage.setItem("secure_unlock_hash", hashHex);
+        setIsUnlocked(true);
+      } else {
+        setIsPasswordError(true);
+        setTimeout(() => setIsPasswordError(false), 800);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   useEffect(() => {
     setIsMounted(true);
@@ -141,11 +168,28 @@ export default function CountdownLock({ children }: { children: React.ReactNode 
         <TimeUnit value={formatNumber(timeLeft.seconds)} label="Seconds" className="w-full sm:w-auto mt-4 sm:mt-0" />
       </div>
 
-      {/* ── Footer ── */}
-      <div className="countdown-element absolute bottom-12 left-0 right-0 text-center z-10 hidden md:block">
-        <p className="font-trap text-[10px] uppercase tracking-[0.4em] text-white/30">
+      {/* ── Footer & Developer Override ── */}
+      <div className="countdown-element absolute bottom-8 left-0 right-0 text-center z-10 flex flex-col items-center gap-4">
+        <p className="font-trap text-[10px] uppercase tracking-[0.4em] text-white/30 hidden md:block">
           Graduation Day — June 13, 2026
         </p>
+
+        {/* Developer Password Input */}
+        <form onSubmit={handleDeveloperSubmit} className="relative flex items-center">
+          <div className="absolute left-3 text-white/20">
+            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <input 
+            type="password"
+            value={devPassword}
+            onChange={(e) => setDevPassword(e.target.value)}
+            placeholder="DEV OVERRIDE"
+            className={`bg-white/[0.02] border backdrop-blur-md rounded-full py-2 pl-8 pr-4 text-[9px] font-trap tracking-[0.2em] text-white/80 placeholder:text-white/20 focus:outline-none transition-all w-48 focus:w-56 
+              ${isPasswordError ? 'border-red-500/50 bg-red-500/5' : 'border-white/10 focus:border-[#6E00FF]/50 focus:bg-[#6E00FF]/10'}`}
+          />
+        </form>
       </div>
     </div>
   );
