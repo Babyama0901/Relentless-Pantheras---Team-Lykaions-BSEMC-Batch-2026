@@ -13,6 +13,7 @@
   --font-formula: var(--font-formula), ui-sans-serif, system-ui, sans-serif;
   --font-arame:   var(--font-arame), ui-monospace, monospace;
   --font-trap:    var(--font-trap), ui-sans-serif, system-ui, sans-serif;
+  --font-script:  var(--font-script), cursive;
 }
 
 /* ─── Base Styles ──────────────────────────────────────────────────────────── */
@@ -65,7 +66,7 @@
     font-family: "Trap", ui-sans-serif, system-ui, sans-serif;
   }
   .font-script {
-    font-family: var(--font-script), cursive;
+    font-family: var(--font-script);
   }
 
   /* Brand accent classes */

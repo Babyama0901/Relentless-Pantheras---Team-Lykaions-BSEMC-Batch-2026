@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { X, ArrowLeft } from "lucide-react";
 import StudentCard, { StudentInfo } from "./StudentCard";
-import { getAssetPath } from "./utils";
 
 interface YearbookViewportProps {
   onClose: () => void;
@@ -33,118 +32,72 @@ export default function YearbookViewport({ onClose }: YearbookViewportProps) {
   }, []);
 
   return (
-    <div className="fixed inset-0 z-[60] bg-[#05000A] overflow-y-auto w-full h-[100dvh] hide-scrollbar">
+    <div className="fixed inset-0 z-[60] bg-[#090909] overflow-y-auto w-full h-[100dvh]">
       
-      {/* ── Background Image (If it matches hero, we use a dark base or image) ── */}
-      <div
-        className="fixed inset-0 z-0 pointer-events-none"
-        style={{
-          background: "linear-gradient(120deg, rgba(66,0,153,0.3) 0%, rgba(110,0,255,0.05) 50%, #05000A 100%)",
-        }}
-      />
-
-      {/* ── Dot grid overlay ── */}
-      <div
-        className="fixed inset-0 z-[1] pointer-events-none"
-        style={{
-          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px)",
-          backgroundSize: "22px 22px",
-        }}
-      />
-
-      {/* ── Dark vignette edges ── */}
-      <div
-        className="fixed inset-0 z-[2] pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse 100% 100% at 50% 50%, transparent 30%, rgba(5,0,10,0.9) 100%)",
-        }}
-      />
-
-
       {/* Header Controls */}
-      <div className="sticky top-0 z-20 w-full px-6 py-6 flex items-center justify-between pointer-events-none">
+      <div className="sticky top-0 z-50 w-full px-8 py-5 flex items-center justify-between bg-[#090909]/90 backdrop-blur-lg border-b border-[#6E00FF]/30">
         <button 
           onClick={onClose}
-          className="pointer-events-auto group flex items-center gap-2 text-white/70 hover:text-white transition-colors bg-[#05000A]/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/10"
+          className="group flex items-center gap-3 text-white/50 hover:text-white transition-colors"
           aria-label="Return to previous section"
         >
-          <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-          <span className="font-formula uppercase text-xs tracking-widest hidden sm:block mt-0.5">Return</span>
+          <ArrowLeft size={22} className="group-hover:-translate-x-1.5 transition-transform duration-300" />
+          <span className="font-trap uppercase text-sm tracking-[0.2em] hidden sm:block font-bold">Return</span>
         </button>
 
         <button 
           onClick={onClose}
-          className="pointer-events-auto group flex items-center gap-2 text-white/70 hover:text-white transition-colors bg-[#05000A]/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/10"
+          className="group flex items-center gap-3 text-white/50 hover:text-white transition-colors"
           aria-label="Close viewport"
         >
-          <span className="font-formula uppercase text-xs tracking-widest hidden sm:block mt-0.5">Close</span>
-          <X size={18} className="group-hover:rotate-90 transition-transform duration-300" />
+          <span className="font-trap uppercase text-sm tracking-[0.2em] hidden sm:block font-bold">Close</span>
+          <X size={26} className="group-hover:rotate-90 transition-transform duration-500" />
         </button>
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 container mx-auto px-6 py-4 md:py-12 flex flex-col items-center">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 sm:px-12 lg:px-16 py-20 flex flex-col items-center">
         
-        {/* Title Header with Logo */}
-        <div className="text-center mb-24 flex flex-col items-center gap-6">
-          {/* Logo */}
-          <div className="mb-2">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img 
-              src={getAssetPath("/Logo/WHITE LOGO MARK.png")} 
-              alt="Lykaions Logo" 
-              className="w-16 h-16 object-contain opacity-80"
-              style={{ filter: "drop-shadow(0 0 10px rgba(110,0,255,0.8))" }}
-            />
-          </div>
-          <p className="font-trap text-xs md:text-sm font-semibold uppercase tracking-[0.45em] text-white/60">
+        {/* Title Header */}
+        <div className="text-center mb-28 flex flex-col items-center gap-6">
+          <p className="font-trap text-sm font-bold uppercase tracking-[0.5em] text-white">
             Relentless Pantheras · BSEMC
           </p>
           <h1 
-            className="font-formula uppercase leading-[0.88] text-white"
-            style={{ 
-              fontSize: "clamp(3rem, 6vw, 6rem)",
-              textShadow: "0 0 40px rgba(110,0,255,0.4)" 
-            }}
+            className="font-formula uppercase leading-[0.85] text-white text-6xl md:text-8xl lg:text-9xl tracking-tighter"
+            style={{ textShadow: "0 0 60px rgba(110,0,255,0.4)" }}
           >
             TEAM <br className="md:hidden" />
             <span className="text-[#6E00FF]">LYKAIONS</span>
           </h1>
-          <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-[#6E00FF] to-transparent mt-4" />
         </div>
 
-        {/* Section: Young Nobles (3 Column Grid) */}
-        <div className="w-full max-w-6xl mb-32">
-          <div className="flex flex-col items-center gap-4 mb-16">
-            <h2 className="font-formula text-3xl md:text-4xl uppercase tracking-widest text-[#6E00FF] text-center"
-                style={{ textShadow: "0 0 20px rgba(110,0,255,0.5)" }}>
-              Young Nobles
+        {/* Section: Young Nobles */}
+        <div className="w-full mb-32">
+          <div className="flex items-center gap-6 mb-16 w-full">
+            <h2 className="font-formula text-3xl md:text-4xl uppercase tracking-widest text-[#6E00FF] whitespace-nowrap">
+              Young Nobles <span className="text-white/30 text-2xl md:text-3xl">OF BSEMC 2026</span>
             </h2>
-            <p className="font-trap text-sm uppercase tracking-[0.3em] text-white/50">
-              of BSEMC 2026
-            </p>
+            <div className="h-[2px] bg-gradient-to-r from-[#6E00FF] to-transparent flex-1 opacity-50" />
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12">
             {YOUNG_NOBLES.map((student) => (
               <StudentCard key={student.id} student={student} />
             ))}
           </div>
         </div>
 
-        {/* Section: OG & UNC (2 Column Grid) */}
-        <div className="w-full max-w-4xl mb-24">
-           <div className="flex flex-col items-center gap-4 mb-16">
-            <h2 className="font-formula text-3xl md:text-4xl uppercase tracking-widest text-[#6E00FF] text-center"
-                style={{ textShadow: "0 0 20px rgba(110,0,255,0.5)" }}>
-              OG and UNC
+        {/* Section: OG & UNC */}
+        <div className="w-full mb-20">
+           <div className="flex items-center gap-6 mb-16 w-full">
+            <h2 className="font-formula text-3xl md:text-4xl uppercase tracking-widest text-[#6E00FF] whitespace-nowrap">
+              OG and UNC <span className="text-white/30 text-2xl md:text-3xl">OF BSEMC 2026</span>
             </h2>
-            <p className="font-trap text-sm uppercase tracking-[0.3em] text-white/50">
-              of BSEMC 2026
-            </p>
+            <div className="h-[2px] bg-gradient-to-r from-[#6E00FF] to-transparent flex-1 opacity-50" />
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-12 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16 max-w-5xl">
             {OG_UNC.map((student) => (
               <StudentCard key={student.id} student={student} />
             ))}
@@ -154,15 +107,9 @@ export default function YearbookViewport({ onClose }: YearbookViewportProps) {
       </div>
 
       {/* Footer Branding Area */}
-      <div className="relative z-10 w-full py-12 bg-gradient-to-t from-[#6E00FF]/10 to-transparent flex flex-col items-center justify-center gap-4">
-         <div className="w-full h-px bg-gradient-to-r from-transparent via-[#6E00FF]/30 to-transparent absolute top-0" />
-         {/* eslint-disable-next-line @next/next/no-img-element */}
-         <img 
-            src={getAssetPath("/Logo/WHITE LOGO MARK.png")} 
-            alt="Lykaions Logo Mini" 
-            className="w-8 h-8 object-contain opacity-40 mb-2"
-          />
-         <p className="font-formula text-[10px] uppercase tracking-[0.4em] text-white/40">
+      <div className="w-full py-10 bg-[#6E00FF]/10 flex flex-col items-center justify-center border-t-2 border-[#6E00FF]/30 mt-auto">
+         <h3 className="font-formula text-2xl text-white uppercase tracking-[0.3em] opacity-80 mb-2">Team Lykaions</h3>
+         <p className="font-trap text-xs uppercase tracking-[0.4em] text-[#6E00FF]">
             Batch 2026 · The Final Chapter
          </p>
       </div>

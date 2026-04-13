@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { formula1, arame, trap, aboveBeyond } from "./fonts";
+import { formula1, arame, trap, script } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`dark ${formula1.variable} ${arame.variable} ${trap.variable} ${aboveBeyond.variable} selection:bg-[#6E00FF] selection:text-white`}>
+    <html lang="en" className={`dark ${formula1.variable} ${arame.variable} ${trap.variable} ${script.variable} selection:bg-[#6E00FF] selection:text-white`}>
       <body className="font-trap antialiased bg-black text-white min-h-screen overflow-x-hidden">
         {children}
       </body>
