@@ -76,17 +76,15 @@ export default function HeroSection() {
         {slides.map((url, index) => (
           <div
             key={url}
-            className={`absolute inset-0 transition-opacity duration-[2000ms] ease-in-out ${
-              currentSlide === index ? "opacity-60 z-10" : "opacity-0 z-0"
-            }`}
+            className={`absolute inset-0 transition-opacity duration-[2000ms] ease-in-out ${currentSlide === index ? "opacity-60 z-10" : "opacity-0 z-0"
+              }`}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={getAssetPath(url)}
               alt={`Slide ${index + 1}`}
-              className={`w-full h-full object-cover transition-transform duration-[8000ms] ease-out origin-center ${
-                currentSlide === index ? "scale-110" : "scale-100"
-              }`}
+              className={`w-full h-full object-cover transition-transform duration-[8000ms] ease-out origin-center ${currentSlide === index ? "scale-110" : "scale-100"
+                }`}
             />
           </div>
         ))}
@@ -142,20 +140,18 @@ export default function HeroSection() {
               A testament to resilience, friendship, and the pursuit of excellence. Documenting the moments that defined our journey.
             </p>
           </div>
-
-          </div>
         </div>
       </div>
 
-      {/* ── Scroll Indicator ── */}
-      <div
-        ref={scrollIndicatorRef}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3"
-        aria-hidden="true"
-      >
-        <span className="font-trap text-[9px] uppercase tracking-[0.4em] text-white/30">Scroll to Explore</span>
-        <div className="scroll-line w-px h-10 bg-gradient-to-b from-[#6E00FF] to-transparent" />
-      </div>
-    </section>
+      {/* ── Scroll Indicator ── */ }
+  <div
+    ref={scrollIndicatorRef}
+    className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3"
+    aria-hidden="true"
+  >
+    <span className="font-trap text-[9px] uppercase tracking-[0.4em] text-white/30">Scroll to Explore</span>
+    <div className="scroll-line w-px h-10 bg-gradient-to-b from-[#6E00FF] to-transparent" />
+  </div>
+    </section >
   );
 }
