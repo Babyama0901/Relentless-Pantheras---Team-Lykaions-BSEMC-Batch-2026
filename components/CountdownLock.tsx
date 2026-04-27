@@ -25,9 +25,14 @@ export default function CountdownLock({ children }: { children: React.ReactNode 
         .map(b => b.toString(16).padStart(2, '0'))
         .join('');
         
-      const VALID_HASH = "8d6cf8a58990d522cc899f54e9f0adeee84f4ea9c7fabb2aad2953e4ad11a777";
+      const VALID_HASHES = [
+        "8d6cf8a58990d522cc899f54e9f0adeee84f4ea9c7fabb2aad2953e4ad11a777", // existing
+        "bf1a28b71c6a2369ae2dd892192ab0bcf9ac7fdce132cba6dc560f85704579c6", // 076077
+        "c43982e28333db73ba5d5035cbbe63991d7f435641b2ef10080cc8e255bfd359", // 116813
+        "a2f0da8f7197b33150821cb935185963fd8932b4b64cdec4c1757b41a8890d35"  // CD1111
+      ];
       
-      if (hashHex === VALID_HASH) {
+      if (VALID_HASHES.includes(hashHex)) {
         localStorage.setItem("secure_unlock_hash", hashHex);
         setIsUnlocked(true);
       } else {
@@ -62,7 +67,12 @@ export default function CountdownLock({ children }: { children: React.ReactNode 
 
     const runAuthAndTimer = async () => {
       let isAuthorized = false;
-      const VALID_HASH = "8d6cf8a58990d522cc899f54e9f0adeee84f4ea9c7fabb2aad2953e4ad11a777"; // Hash of 'pantheras_dev'
+      const VALID_HASHES = [
+        "8d6cf8a58990d522cc899f54e9f0adeee84f4ea9c7fabb2aad2953e4ad11a777", // existing
+        "bf1a28b71c6a2369ae2dd892192ab0bcf9ac7fdce132cba6dc560f85704579c6", // 076077
+        "c43982e28333db73ba5d5035cbbe63991d7f435641b2ef10080cc8e255bfd359", // 116813
+        "a2f0da8f7197b33150821cb935185963fd8932b4b64cdec4c1757b41a8890d35"  // CD1111
+      ];
       
       try {
         const searchParams = new URLSearchParams(window.location.search);
@@ -79,12 +89,12 @@ export default function CountdownLock({ children }: { children: React.ReactNode 
             .map(b => b.toString(16).padStart(2, '0'))
             .join('');
             
-          if (hashHex === VALID_HASH) {
+          if (VALID_HASHES.includes(hashHex)) {
             localStorage.setItem("secure_unlock_hash", hashHex);
             isAuthorized = true;
             window.history.replaceState({}, document.title, window.location.pathname);
           }
-        } else if (localStorage.getItem("secure_unlock_hash") === VALID_HASH) {
+        } else if (VALID_HASHES.includes(localStorage.getItem("secure_unlock_hash") || "")) {
           isAuthorized = true;
         }
       } catch (e) {
