@@ -46,7 +46,8 @@ export default function CountdownLock({ children }: { children: React.ReactNode 
 
   useEffect(() => {
     setIsMounted(true);
-    let timer: NodeJS.Timeout;
+    let timer: NodeJS.Timeout | null = null;
+    let isEffectMounted = true;
 
     const calculateTime = () => {
       const now = new Date().getTime();
@@ -101,6 +102,8 @@ export default function CountdownLock({ children }: { children: React.ReactNode 
         // Fallback silently on old browsers
       }
 
+      if (!isEffectMounted) return;
+
       if (isAuthorized) {
         setIsUnlocked(true);
       } else {
@@ -112,6 +115,7 @@ export default function CountdownLock({ children }: { children: React.ReactNode 
     runAuthAndTimer();
 
     return () => {
+      isEffectMounted = false;
       if (timer) clearInterval(timer);
     }
   }, []);
